@@ -1,3 +1,5 @@
+                 # TASK 1
+
 def first_last_occurrence(nums,target):
     ind = []
     # enumerate function used to give index no. and data in each iteration element
