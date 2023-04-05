@@ -1,0 +1,12 @@
+write a code to print the divison of two numbers.
+
+input = user input
+output = output
+
+
+Example :-
+
+dividend == 10
+divisor == 5
+
+the divison of 10/5  is = 2.0

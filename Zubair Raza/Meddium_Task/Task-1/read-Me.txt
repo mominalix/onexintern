@@ -1,0 +1,10 @@
+This is a simple python program to add two numbers.
+
+
+the main function is two add the numbers.
+the return gives the sum off numbers.
+
+Example :-
+
+input ==  add(12,45)
+output == 57.0

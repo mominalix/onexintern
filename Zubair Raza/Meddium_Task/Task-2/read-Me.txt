@@ -1,0 +1,14 @@
+The program to convert roman into integers.
+
+the main function is to convert romans into integers.
+
+Example:-
+
+input ==  roman_to_int('LVIII')
+output ==  58
+
+
+
+
+input ==  roman_to_int('MCMXCIV')
+output ==  1994

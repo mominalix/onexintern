@@ -1,0 +1,21 @@
+python program to find the median of two sorted arrays.
+
+this program Merge the two arrays and sort them.
+In this implementation, we first merge the two input arrays and sort 
+them using the sorted() function. We then get the length of the merged
+ array, and if the length is odd, we return the middle element; otherwise,
+ we return the average of the middle two elements.
+
+
+Example :-
+
+input == find_median_sorted_arrays([], [1])
+output == 1.00
+
+
+
+
+
+
+input == find_median_sorted_arrays([2], [])
+output == 2.00
