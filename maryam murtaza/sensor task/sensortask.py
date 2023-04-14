@@ -13,31 +13,30 @@ print("original file\n",csv_1)
 csv_1.dropna(inplace=True)
 #to remove duplicates values from dataset
 csv_1.drop_duplicates(inplace=True)
-updated_csv=csv_1
-print("updated csv file \n",updated_csv)
+print("updated csv file \n",csv_1)
  #calculating summary statistics such as mean, median,standard deviation, min and max values for both temperature and humidity
-cal=updated_csv.describe()
+cal=csv_1.describe()
 print(cal)
-md=updated_csv.median(numeric_only=True)
+md=csv_1.median(numeric_only=True)
 print("med=\n",md)
 # visualization on chart 
 #cut function used to convert continous data into categorical data
-updated_csv["Timecategory"]=pd.cut(pd.to_datetime(updated_csv.Timestamp).dt.hour,
+csv_1["Timecategory"]=pd.cut(pd.to_datetime(csv_1.Timestamp).dt.hour,
     bins=[0,12,17,20,22],
     labels=["Morning","Afternoon","Evening","Night"])
 # remove none value 
-updated_csv.dropna(inplace=True)
+csv_1.dropna(inplace=True)
 #to show huimidity ,temperature over a time period in line chart
 Data1=go.Scatter(
-    x=updated_csv.Timecategory,
-    y=updated_csv.Humidity,
+    x=csv_1.Timecategory,
+    y=csv_1.Humidity,
     text="Humidity",
     mode="lines",
     line=dict(color="green"),
 )
 Data2=go.Scatter(
-    x=updated_csv.Timecategory,
-    y=updated_csv.Temperature,
+    x=csv_1.Timecategory,
+    y=csv_1.Temperature,
     text="Temperature",
     mode="lines",
     line=dict(color="purple"),
@@ -52,7 +51,7 @@ figure=go.Figure(data=td,layout=layout)
 plt.plot(figure)
 #to scatter plot the humidity and temperature with colored coded point of time of day
 Data=px.scatter(
-    data_frame=updated_csv,
+    data_frame=csv_1,
     title="relation btw humidity and temperature with color coded points of time ",
     x="Temperature",
     y="Humidity",
@@ -61,7 +60,7 @@ Data=px.scatter(
 )
 Data.show()
 #heatmap which describe the relation between temperature and humidity
-visualize=px.density_heatmap(updated_csv,title="Relationship between Humidity,Temperature and Timezone ",
+visualize=px.density_heatmap(csv_1,title="Relationship between Humidity,Temperature and Timezone ",
                                 x="Temperature",
                                 y="Humidity",
                                     )
