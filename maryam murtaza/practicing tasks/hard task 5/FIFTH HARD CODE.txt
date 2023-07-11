@@ -1,0 +1,43 @@
+FIFTH HARD CODE
+
+TASK :
+MAXIMUM POINTS ON LINE.
+
+SOLUTION:
+
+from collections import defaultdict
+
+class Solution(object):
+    def maxPoints(self, points):
+        if len(points) < 3:
+            return len(points)
+        
+        res = 0
+        for i in range(len(points)):
+            slopes = defaultdict(int)
+            duplicate = 1  # Number of duplicate points
+            x1, y1 = points[i]
+            
+            for j in range(i+1, len(points)):
+                x2, y2 = points[j]
+                if x1 == x2 and y1 == y2:
+                    duplicate += 1
+                    continue
+
+                dx = x2 - x1
+                dy = y2 - y1
+                gcd_val = self.gcd(dx, dy)  # Helper function to calculate greatest common divisor
+                slope = (dy // gcd_val, dx // gcd_val)
+                slopes[slope] += 1
+            
+            if slopes:
+                res = max(res, max(slopes.values()) + duplicate)
+            else:
+                res = max(res, duplicate)
+        
+        return res
+    
+    def gcd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a

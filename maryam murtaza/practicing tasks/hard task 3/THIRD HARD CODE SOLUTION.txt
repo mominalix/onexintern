@@ -1,0 +1,58 @@
+THIRD HARD CODE 
+
+TASK:
+REMOVE INVALID PARANTHESES
+
+
+SOLUTION:
+
+class Solution(object):
+    def removeInvalidParentheses(self, s):
+       
+  
+        l, r = 0, 0
+        for char in s:  
+            l += (char == '(')
+            if (l == 0):
+                r += (char == ')')
+            else:
+                l -= (char == ')')
+        
+        
+        def isvalid(s):
+            count = 0
+            for char in s:
+                if char == '(': count += 1
+                if char == ')': count -= 1
+                if count < 0: return False
+            
+            return count == 0
+        
+        
+        def dfs(comb, start, left, right):
+            curr_str = ''.join(comb)
+            
+            if left == 0 and right == 0 and isvalid(curr_str): 
+                result.append(curr_str)
+                return
+            
+            for i in range(start, len(s)):
+                if s[i] != '(' and  s[i] != ')': 
+                    continue
+                if i != start and s[i] == s[i-1]: 
+                    continue
+                
+                
+                if (right > 0 and s[i] == ')'):
+                    comb[i] = '' 
+                    dfs(comb, i+1, left, right - 1)
+                    comb[i] = s[i]  
+                elif (left > 0 and s[i] == '('): 
+                    comb[i] = '' 
+                    dfs(comb, i+1, left-1, right)
+                    comb[i] = s[i] 
+        
+        result = []
+        dfs(list(s), 0, l, r)
+        
+        return result

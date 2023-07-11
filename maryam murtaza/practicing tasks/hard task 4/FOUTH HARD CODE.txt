@@ -1,0 +1,19 @@
+FOURTH HARD CODE
+
+TASK:FIRST MISSING POSITIVE 
+
+SOLUTION:
+
+class Solution(object):
+    def firstMissingPositive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        missingnum = set(nums)
+
+        for i in range(1, len(nums) + 2):
+            if i not in missingnum:
+                return i
+        
+        return -1
